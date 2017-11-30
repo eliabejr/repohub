@@ -24,7 +24,7 @@ export default props => (
       </Instructions>
 
       <Instructions>
-        To get started, type the profile name on search box and press the search button.
+        To get started, type the username on search field and press the search button.
       </Instructions>
 
       <Username
