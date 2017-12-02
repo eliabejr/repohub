@@ -11,24 +11,18 @@ const styles = {
   votes: { color: '#999' },
 }
 
-export var username = "eliabejr"
+export var username  = "eliabejr"
 
-function RepoList({ data: { loading, posts } }) {
+function RepoList({ data: { loading, data } }) {
+
   if (loading) {
-    return <Text style={styles.outer}>Loading</Text>;
-  } else {
-    return (
-      <View style={styles.outer}>
-        {user.map(user => (
-          <View key={user.id} style={styles.wrapper}>
-            <View>
-              <Text style={styles.header}>{user.repositories.nodes.name}</Text>
-            </View>
-          </View>
-        ))}
-      </View>
-    );
+    return <Text style={styles.outer}>Loading Repositories</Text>;
+  } else{
+    let list = data.user.repositories;
+    return list
+    // repositories...
   }
+
 }
 
 export default graphql(gql`

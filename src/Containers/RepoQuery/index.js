@@ -5,8 +5,12 @@ import { ApolloClient, createNetworkInterface, ApolloProvider } from 'react-apol
 // Components
 import RepoQuery from './RepoQuery';
 
-const networkInterface = createNetworkInterface('https://api.github.com/graphql');
-const client = new ApolloClient();
+const client = new ApolloClient({
+    networkInterface: createNetworkInterface('https://api.github.com/graphql', {
+    credentials: 'same-origin',
+    }),
+    shouldBatch: false
+    });
 
 const RepoList = () => (
   <ApolloProvider client={client}>
