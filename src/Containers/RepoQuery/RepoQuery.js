@@ -32,8 +32,8 @@ function RepoList({ data: { loading, posts } }) {
 }
 
 export default graphql(gql`
-  query GetRepoByUser(${username}: String!) {
-   user(login: ${username}) {
+  query GetRepoByUser {
+   user(login: "${username}") {
      repositories (last: 10) {
        nodes {
          name
