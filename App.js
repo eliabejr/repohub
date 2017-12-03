@@ -2,25 +2,21 @@ import React, { Component } from 'react'
 import { Button } from 'react-native'
 import { StackNavigator } from 'react-navigation';
 
-
 //Components
 import AppWrapper from './src/Components/AppWrapper'
 import WelcomeTitle from './src/Components/WelcomeTitle'
 import Instructions from './src/Components/Instructions'
 import Logo from './src/Components/Logo'
 import Username from './src/Components/Username'
-import RepoList from './src/Containers/RepoQuery'
+import RepoList from './src/Containers/RepoList'
 
-import { username } from './src/Containers/RepoQuery/RepoQuery'
+//Variables
+import { username } from './src/Containers/RepoList/ListRepos'
 
 export default class HomeScreen extends Component {
 
   static navigationOptions = {
     title: "RepoHub",
-  };
-
-  submitName() {
-    alert(username)
   }
 
   render() {

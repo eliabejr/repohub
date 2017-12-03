@@ -1,4 +1,12 @@
 import { AppRegistry } from 'react-native';
-import App from './App';
+import { StackNavigator } from 'react-navigation';
 
-AppRegistry.registerComponent('RepoHub', () => App);
+import HomeScreen from './App';
+import RepoList from './src/Containers/RepoList';
+
+const App = StackNavigator({
+  HomeScreen: { screen: HomeScreen },
+  RepoList: { screen: RepoList },
+});
+
+AppRegistry.registerComponent('repohub', () => App);

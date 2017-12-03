@@ -2,7 +2,7 @@ import { AppRegistry } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 
 import HomeScreen from './App';
-import RepoList from './src/Containers/RepoQuery';
+import RepoList from './src/Containers/RepoList';
 
 const App = StackNavigator({
   HomeScreen: { screen: HomeScreen },
