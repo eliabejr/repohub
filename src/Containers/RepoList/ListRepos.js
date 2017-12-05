@@ -3,40 +3,11 @@ import { Text, View } from 'react-native';
 import { graphql, ApolloProvider } from 'react-apollo'
 import gql from 'graphql-tag'
 
-export var username  = "eliabejr"
+export var userLogin = "eliabejr"
 
-class ListRepos extends Component {
-
-  render() {
-
-    //Loading Message
-
-    if (this.props.GetRepoByUser && this.props.GetRepoByUser.loading) {
-      return (<View><Text>Loading repositories</Text></View>)
-    }
-
-    //Error Verification
-
-    if (this.props.GetRepoByUser && this.props.GetRepoByUser.error) {
-      return (<View><Text>We couldn't load user repositories</Text></View>)
-    }
-
-    const userRepos = this.props.GetRepoByUser.data
-
-    return (
-      <View>
-        {userRepos.map(user => (
-          <Text>{user.repositories.nodes.name}</Text>
-        ))}
-      </View>
-    )
-  }
-
-}
-
-export const ALL_REPOS_QUERY = gql`
+export const GetRepoByUser = gql`
 query GetRepoByUser{
- user(login: "${username}") {
+ user(login: "${userLogin}") {
    repositories (last: 10) {
      nodes {
        name
@@ -46,4 +17,38 @@ query GetRepoByUser{
 }
 `
 
-export default graphql(ALL_REPOS_QUERY, { name: 'GetRepoByUser',})(ListRepos)
+const repositoryList = graphql(GetRepoByUser, {
+  props: ({ data }) => {
+
+    // Loading state
+    if (data.loading) {
+      return { loading: true };
+    }
+
+    // Error state
+    if (data.error) {
+      return (<Text>Sorry, we couldn't load repositories.</Text>)
+    }
+
+    // OK state
+    return (
+      { data }
+    );
+  },
+})
+
+class Repository extends Component {
+
+    render() {
+      return ( // Mapping repository by name node
+        <View>
+          {data.user.repositories.nodes.map(repo => (
+            <Text>{repo.name}</Text>
+          ))}
+        </View>
+      )
+    }
+  }
+
+const ListRepos = repositoryList(Repository);
+export default ListRepos;

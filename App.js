@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Button } from 'react-native'
 import { StackNavigator } from 'react-navigation';
 
-//Components
+// Components
 import AppWrapper from './src/Components/AppWrapper'
 import WelcomeTitle from './src/Components/WelcomeTitle'
 import Instructions from './src/Components/Instructions'
@@ -10,15 +10,15 @@ import Logo from './src/Components/Logo'
 import Username from './src/Components/Username'
 import RepoList from './src/Containers/RepoList'
 
-//Variables
-import { username } from './src/Containers/RepoList/ListRepos'
+// Variables
+import { userLogin } from './src/Containers/RepoList/ListRepos'
 
 export default class HomeScreen extends Component {
 
   static navigationOptions = {
     title: "RepoHub",
   }
-
+  
   render() {
     const { navigate } = this.props.navigation;
     return (
@@ -43,7 +43,7 @@ export default class HomeScreen extends Component {
             autoCorrect={false}
             clearButtonMode="always"
             onSubmitEditing={() =>navigate('RepoList')}
-  					value={username}
+  					value={userLogin}
             placeholder="Search Profile"
           />
           <Button
